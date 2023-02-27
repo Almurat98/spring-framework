@@ -13,7 +13,7 @@ public class Spring06SpringBootDemoApplication {
 
     public static void main(String[] args) {
         Comment comment = new Comment();
-        comment.setAuthor("John");
+        comment.setAuthor("Jones");
         comment.setText("Oreo is sleeping");
 
         ApplicationContext container =  SpringApplication.run(Spring06SpringBootDemoApplication.class, args);
