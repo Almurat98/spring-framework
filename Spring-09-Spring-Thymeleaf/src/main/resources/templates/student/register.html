@@ -14,11 +14,17 @@
 <h2 th:text="${'Welcome'+students.get(1).firstName+students.get(1).lastName}"></h2>
 <a th:href="@{https://cydeo.com}">Cydeo Home</a>
 
-<a th:href="@{/student/welcome}">welocme</a>
+<a th:href="@{/student/welcome}">welcome</a>
 
 <a th:href="@{/student/welcome(id=3)}">Student 3</a>
 
 <a th:href="@{/student/welcome(id=${students.get(2).firstName})}">Student 2</a>
+
+<ul>
+    <li th:each="student: ${students}" th:text="${student.firstName}"></li>
+    <li></li>
+    <li></li>
+</ul>
 
 
 </body>
