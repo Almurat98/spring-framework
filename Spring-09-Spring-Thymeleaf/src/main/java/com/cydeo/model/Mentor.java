@@ -1,5 +1,6 @@
 package com.cydeo.model;
 
+import com.cydeo.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,9 +8,14 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Student {
+public class Mentor {
     private String firstName;
     private String lastName;
-    private int age;
-    private String state;
+    private String email;
+    private Gender gender;
+    private String batch;
+    private boolean isGraduated;
+    private String Company;
+
+
 }
