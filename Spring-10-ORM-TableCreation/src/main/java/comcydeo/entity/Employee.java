@@ -1,6 +1,10 @@
 package comcydeo.entity;
 
-public class Employee {
+import javax.persistence.*;
 
+@Entity
+public class Employee {
+    @Id
+    private int id;
     private String name;
 }
