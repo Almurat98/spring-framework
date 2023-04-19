@@ -32,8 +32,8 @@ public class Merchant {
         this.payoutDelayCount = payoutDelayCount;
     }
 
-    @OneToMany
-    private List<Payment> payment;
+    @OneToMany(mappedBy = "merchant")
+    private List<Payment> paymentList;
 
 
 }
