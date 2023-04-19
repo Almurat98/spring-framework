@@ -2,9 +2,11 @@ package com.cydeo.bootsrap;
 
 import com.cydeo.entity.Department;
 import com.cydeo.entity.Employee;
+import com.cydeo.entity.Region;
 import com.cydeo.enums.Gender;
 import com.cydeo.repository.DepartmentRepository;
 import com.cydeo.repository.EmployeeRepository;
+import com.cydeo.repository.RegionRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -17,11 +19,13 @@ import java.util.List;
 public class DataGenerator implements CommandLineRunner {
     EmployeeRepository employeeRepository;
     DepartmentRepository departmentRepository;
+    RegionRepository regionRepository;
 
 
-    public DataGenerator(EmployeeRepository employeeRepository, DepartmentRepository departmentRepository) {
+    public DataGenerator(EmployeeRepository employeeRepository,  RegionRepository regionRepository,DepartmentRepository departmentRepository) {
         this.employeeRepository = employeeRepository;
         this.departmentRepository = departmentRepository;
+        this.regionRepository=regionRepository;
     }
 
     @Override
@@ -41,23 +45,23 @@ public class DataGenerator implements CommandLineRunner {
         Department d4 = new Department("Phones & Tablets","Electronics");
         Department d5 = new Department("Computers","Electronics");
 
-//        Region r1 = new Region("Southwest","United States");
-//        Region r2 = new Region("Central","United States");
-//        Region r3 = new Region("Northwest","United States");
-//        Region r4 = new Region("Quebec'","Canada");
-//        Region r5 = new Region("Central","Asia");
-//
-//        e1.setDepartment(d1);
-//        e2.setDepartment(d2);
-//        e3.setDepartment(d3);
-//        e4.setDepartment(d4);
-//        e5.setDepartment(d5);
-//
-//        e1.setRegion(r1);
-//        e2.setRegion(r2);
-//        e3.setRegion(r3);
-//        e4.setRegion(r4);
-//        e5.setRegion(r5);
+        Region r1 = new Region("Southwest","United States");
+        Region r2 = new Region("Central","United States");
+        Region r3 = new Region("Northwest","United States");
+        Region r4 = new Region("Quebec'","Canada");
+        Region r5 = new Region("Central","Asia");
+
+        e1.setDepartment(d1);
+        e2.setDepartment(d2);
+        e3.setDepartment(d3);
+        e4.setDepartment(d4);
+        e5.setDepartment(d5);
+
+        e1.setRegion(r1);
+        e2.setRegion(r2);
+        e3.setRegion(r3);
+        e4.setRegion(r4);
+        e5.setRegion(r5);
 
 
 
