@@ -10,8 +10,8 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 public class Department {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String department;
 
     private String division;
