@@ -1,5 +1,7 @@
 package com.cydeo.bootstrap;
 
+import com.cydeo.repository.DepartmentRepository;
+import com.cydeo.repository.EmployeeRepository;
 import com.cydeo.repository.RegionRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -9,9 +11,13 @@ public class DataGenerator implements CommandLineRunner {
 
 
     private RegionRepository regionRepository;
+    private DepartmentRepository departmentRepository;
+    private EmployeeRepository employeeRepository;
 
-    public DataGenerator(RegionRepository regionRepository) {
+    public DataGenerator(RegionRepository regionRepository,DepartmentRepository departmentRepository,EmployeeRepository employeeRepository) {
         this.regionRepository = regionRepository;
+        this.departmentRepository = departmentRepository;
+        this.employeeRepository=employeeRepository;
     }
 
     @Override
@@ -27,5 +33,25 @@ public class DataGenerator implements CommandLineRunner {
         System.out.println(regionRepository.findTop2ByCountry("Canada"));
 
         System.out.println("------------REGION ENDS----------------");
+
+
+        System.out.println("--------------Department starts----------------");
+
+        System.out.println(departmentRepository.findByDepartment("Furniture"));
+        System.out.println(departmentRepository.findByDivisionIs("Home"));
+        System.out.println(departmentRepository.findDistinctTop3ByDivisionContainingIgnoreCase("Hea"));
+        System.out.println("--------------Department ends----------------");
+
+
+        System.out.println("-----------------Employee starts--------------------");
+        System.out.println(employeeRepository.findByEmail("amcnee1@google.es"));
+        System.out.println(employeeRepository.findByFirstNameAndLastNameAndEmailNotNull("Annie","Denge"));
+        System.out.println(employeeRepository.findByLastNameStartingWith("Al"));
+        System.out.println(employeeRepository.findBySalaryGreaterThan(100000).size());
+        System.out.println(employeeRepository.findBySalaryLessThanEqual(35000));
+        System.out.println(employeeRepository.findBySalaryGreaterThanEqualOrderBySalaryDesc(160000));
+        System.out.println(employeeRepository.findDistinctTop5BySalaryLessThan(50000));
+        System.out.println(employeeRepository.findByEmailIsNull());
+        System.out.println("-----------------Employee ends--------------------");
     }
 }
