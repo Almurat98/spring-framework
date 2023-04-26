@@ -66,7 +66,6 @@ public class DataGenerator implements CommandLineRunner {
         System.out.println( courseRepository.existsByName("String"));
         System.out.println( courseRepository.countByCategory("Spring"));
         courseRepository.findByNameStartingWith("S").forEach(System.out::println);
-
         System.out.println("-----------------Course ends--------------------");
 
 
