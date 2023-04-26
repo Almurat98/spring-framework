@@ -1,5 +1,6 @@
 package com.cydeo.bootstrap;
 
+import com.cydeo.repository.CourseRepository;
 import com.cydeo.repository.DepartmentRepository;
 import com.cydeo.repository.EmployeeRepository;
 import com.cydeo.repository.RegionRepository;
@@ -14,10 +15,13 @@ public class DataGenerator implements CommandLineRunner {
     private DepartmentRepository departmentRepository;
     private EmployeeRepository employeeRepository;
 
-    public DataGenerator(RegionRepository regionRepository,DepartmentRepository departmentRepository,EmployeeRepository employeeRepository) {
+    private CourseRepository courseRepository;
+
+    public DataGenerator(RegionRepository regionRepository,DepartmentRepository departmentRepository,EmployeeRepository employeeRepository,CourseRepository courseRepository) {
         this.regionRepository = regionRepository;
         this.departmentRepository = departmentRepository;
         this.employeeRepository=employeeRepository;
+        this.courseRepository=courseRepository;
     }
 
     @Override
@@ -55,5 +59,18 @@ public class DataGenerator implements CommandLineRunner {
         System.out.println(employeeRepository.getEmployeeSalary());
         System.out.println(employeeRepository.getEmployeeDetail());
         System.out.println("-----------------Employee ends--------------------");
+        System.out.println("-----------------Course starts--------------------");
+
+        courseRepository.findByCategory("Spring").forEach(System.out::println);
+        courseRepository.findByCategoryOrderByName("Spring").forEach(System.out::println);
+        System.out.println( courseRepository.existsByName("String"));
+        System.out.println( courseRepository.countByCategory("Spring"));
+        courseRepository.findByNameStartingWith("S").forEach(System.out::println);
+
+        System.out.println("-----------------Course ends--------------------");
+
+
+
+
     }
 }
