@@ -1,30 +1,29 @@
 package com.cydeo.dto;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 
-@NoArgsConstructor
-@Getter
-@Setter
+@Data
+@Entity
+@Table(name = "COURSES")
 public class CourseDTO {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Long id;
 
-
+    @Column(name = "NAME")
     private String name;
 
-
+    @Column(name = "CATEGORY")
     private String category;
 
-
+    @Column(name = "RATING")
     private int rating;
 
-
+    @Column(name = "DESCRIPTION")
     private String description;
 
 }
