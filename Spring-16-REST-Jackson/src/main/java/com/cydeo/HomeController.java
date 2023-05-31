@@ -1,4 +1,4 @@
-package com.cydeo.controller;
+package com.cydeo;
 
 import com.cydeo.entity.Account;
 import com.cydeo.entity.User;
@@ -11,7 +11,6 @@ import java.util.List;
 
 @RestController
 public class HomeController {
-
     private UserRepository userRepository;
     private AccountRepository accountRepository;
 
