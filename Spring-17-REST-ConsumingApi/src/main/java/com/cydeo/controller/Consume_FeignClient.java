@@ -1,20 +1,22 @@
 package com.cydeo.controller;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.client.RestTemplate;
+import com.cydeo.client.UserClient;
+import com.cydeo.dto.ResponseWrapper;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@SpringBootApplication
-@EnableFeignClients
+@RestController
 public class Consume_FeignClient {
 
-    public static void main(String[] args) {
+    private final UserClient userClient;
 
+    public Consume_FeignClient(UserClient userClient) {
+        this.userClient = userClient;
     }
 
-    @Bean
-    public RestTemplate restTemplate(){
-        return new RestTemplate();
+    @GetMapping("/api/v1/users")
+    public ResponseEntity<ResponseWrapper> getUsers(){
+        return ResponseEntity.ok(new ResponseWrapper("User Retrieved"),userClient.getUsers());
     }
 }
