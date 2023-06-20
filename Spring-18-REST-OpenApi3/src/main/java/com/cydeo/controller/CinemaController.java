@@ -27,4 +27,18 @@ public class CinemaController {
         return cinemaRepository.findAll();
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
