@@ -14,17 +14,27 @@ public class LoggingAspect {
     Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
 
 
-    @Pointcut("execution(* com.cydeo.controller.CourseController.*(..))")
-    private void pointcut(){}
+//    @Pointcut("execution(* com.cydeo.controller.CourseController.*(..))")
+//    private void pointcut() {
+//   }
+//
+//    @Before("pointcut()")
+//    public void log() {
+//        logger.info("Logger info ------");
+//    }
 
-    @Before("pointcut()")
-    public void log(){
+    @Pointcut("execution(* com.cydeo.controller.CourseController.*(..))")
+    private void anyProductRepositoryFindById() {
+    }
+    @Before("execution(* com.cydeo.controller.CourseController.*(..))")
+    public void beforeAdvice() {
         logger.info("Logger info ------");
     }
 
+    @Before("anyProductRepositoryFindById()")
+    public void beforeCourseRepoOperation(){
 
+    }
 
 
 }
-
-
