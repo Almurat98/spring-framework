@@ -3,6 +3,7 @@ package com.cydeo.service.impl;
 import com.cydeo.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InOrder;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -26,6 +27,11 @@ class UserServiceImplTest {
         verify(userRepository,atLeastOnce()).deleteByUserName("mikesmith@cydeo.com");
        //  verify(userRepository,atMostOnce()).deleteByUserName("mikesmith@cydeo.com");
        // verify(userRepository,times(2)).deleteByUserName("mikesmith@cydeo.com");
+
+
+        InOrder inOrder = inOrder(userRepository);
+        inOrder.verify(userRepository).findAll();
+        inOrder.verify(userRepository).deleteByUserName("mikesmith@cydeo.com");
     }
 
 
