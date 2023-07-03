@@ -1,5 +1,6 @@
 package com.cydeo.contoller;
 
+import com.cydeo.entity.Student;
 import com.cydeo.service.StudentService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,10 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(StudentController.class)
@@ -31,4 +35,17 @@ class StudentControllerTest {
     }
 
 
+    @Test
+    void getStudent_service() throws Exception {
+        when(studentService.getStudent()).thenReturn(Arrays.asList(
+                new Student("Oreo","Almurat",20),
+                new Student("Alxat","Aji",50)
+        ));
+
+        mvc.perform(MockMvcRequestBuilders
+                .get("/service/student")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(content().json("[{\"id\": 0,\"firstName\":  \"Oreo\",\"lastName\":  \"Almurat\",\"age\":  20},{\"id\": 0,\"firstName\":  \"Alxat\",\"lastName\":  \"Aji\",\"age\":  50}]"))
+                .andReturn();
+    }
 }
